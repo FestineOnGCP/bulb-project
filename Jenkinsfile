@@ -1,7 +1,7 @@
 node {
     checkout scm
 
-    docker.withRegistry('https://hub.docker.com/u', 'festusudomoh') {
+    docker.withRegistry('https://registry-1.docker.io/v2/', 'festusudomoh') {
 
         def customImage = docker.build("musicAppImg:v1")
 
