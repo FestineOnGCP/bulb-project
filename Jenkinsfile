@@ -3,7 +3,7 @@ pipeline{
 	agent any
 
 	environment {
-		DOCKERHUB-CREDENTIALS-PSW = credentials('jenkins-login-token')
+		DOCKERHUB_CREDENTIALS_PSW = credentials('jenkins-login-token')
         	DOCKERHUB-CREDENTIALS-USR = "festinedevops"
 	}
 
