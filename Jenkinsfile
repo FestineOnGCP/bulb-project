@@ -1,11 +1,40 @@
-node {
-    checkout scm
+pipeline{
 
-    docker.withRegistry('', 'dockerhub-id') {
+	agent any
 
-        def customImage = docker.build("festinedevops/test:v1")
+	environment {
+		DOCKERHUB_CREDENTIALS_PSW = credential('jenkins-login-token')
+        $DOCKERHUB_CREDENTIALS_USR = "festinedevops"
+	}
 
-        /* Push the container to the custom Registry */
-        customImage.push()
-    }
+	stages {
+
+		stage('Build') {
+
+			steps {
+				sh 'docker build -t festinedevops/test .'
+			}
+		}
+
+		stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push festinedevops/test:latest'
+			}
+		}
+	}
+
+	post {
+		always {
+			sh 'docker logout'
+		}
+	}
+
 }
