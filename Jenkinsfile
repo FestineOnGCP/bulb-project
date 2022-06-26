@@ -4,7 +4,7 @@ pipeline{
 
 	environment {
 		DOCKERHUB_CREDENTIALS_PSW = credentials('jenkins-login-token')
-        	DOCKERHUB-CREDENTIALS-USR = "festinedevops"
+        	DOCKERHUB_CREDENTIALS_USR = "festinedevops"
 	}
 
 	stages {
