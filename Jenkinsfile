@@ -3,8 +3,8 @@ pipeline{
 	agent any
 
 	environment {
-		DOCKERHUB_CREDENTIALS_PSW = credential('jenkins-login-token')
-        $DOCKERHUB_CREDENTIALS_USR = "festinedevops"
+		DOCKERHUB-CREDENTIALS-PSW = credential('jenkins-login-token')
+        $DOCKERHUB-CREDENTIALS-USR = "festinedevops"
 	}
 
 	stages {
@@ -19,7 +19,7 @@ pipeline{
 		stage('Login') {
 
 			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				sh 'echo $DOCKERHUB-CREDENTIALS-PSW | docker login -u $DOCKERHUB-CREDENTIALS-USR --password-stdin'
 			}
 		}
 
