@@ -3,7 +3,7 @@ node {
 
     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-id') {
 
-        def customImage = docker.build("festinedevops/test:1")
+        def customImage = docker.build("festinedevops/music-app:v1")
 
         /* Push the container to the custom Registry */
         customImage.push()
